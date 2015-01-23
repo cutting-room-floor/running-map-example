@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "docco": "docco index.js"
+    "docco": "docco index.js",
+    "start": "watchify index.js -d -o bundle.js & st"
   },
   "author": "",
   "license": "ISC",
@@ -18,5 +19,10 @@
   "repository": {
     "type": "git",
     "url": "git@github.com:mapbox/running-map-example.git"
+  },
+  "devDependencies": {
+    "brfs": "^1.2.0",
+    "st": "^0.5.2",
+    "watchify": "^2.2.1"
   }
 }
