@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "docco": "docco index.js",
-    "start": "watchify index.js -d -o bundle.js & st"
+    "start": "st -nc & watchify index.js -d -o bundle.js"
   },
   "author": "",
   "license": "ISC",
