@@ -1,0 +1,22 @@
+{
+  "name": "running-map-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "docco": "docco index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chroniton": "^1.1.0",
+    "d3": "^3.5.3",
+    "docco": "^0.6.3",
+    "geojson-segment": "^1.0.0",
+    "togeojson": "^0.10.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:mapbox/running-map-example.git"
+  }
+}
