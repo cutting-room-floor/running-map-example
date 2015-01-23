@@ -100,7 +100,9 @@ for AJAX or any other library that supports loading XML with XMLHttpRequest.</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>d3.xml(<span class="hljs-string">'run.gpx'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(dom)</span> </span>{</pre></div></div>
+            <div class="content"><div class='highlight'><pre>d3.text(<span class="hljs-string">'run.gpx'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(str)</span> </span>{
+
+    <span class="hljs-keyword">var</span> dom = (<span class="hljs-keyword">new</span> DOMParser()).parseFromString(str, <span class="hljs-string">'text/xml'</span>);</pre></div></div>
             
         </li>
         
@@ -149,7 +151,7 @@ for AJAX or any other library that supports loading XML with XMLHttpRequest.</p>
             <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">var</span> map = L.mapbox.map(d3.select(<span class="hljs-built_in">document</span>.body)
         .append(<span class="hljs-string">'div'</span>)
         .attr(<span class="hljs-string">'id'</span>, <span class="hljs-string">'map'</span>)
-        .node(), <span class="hljs-string">'tmcw.gp8115m8'</span>);</pre></div></div>
+        .node(), <span class="hljs-string">'tmcw.l12c66f2'</span>);</pre></div></div>
             
         </li>
         
@@ -463,9 +465,24 @@ varies.</p>
         .attr(<span class="hljs-string">'height'</span>, height + margin.top + margin.bottom)
       .append(<span class="hljs-string">'g'</span>)
         .attr(<span class="hljs-string">'class'</span>, <span class="hljs-string">'chart'</span>)
-        .attr(<span class="hljs-string">'transform'</span>, <span class="hljs-string">'translate('</span> + margin.left + <span class="hljs-string">','</span> + margin.top + <span class="hljs-string">')'</span>);
+        .attr(<span class="hljs-string">'transform'</span>, <span class="hljs-string">'translate('</span> + margin.left + <span class="hljs-string">','</span> + margin.top + <span class="hljs-string">')'</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-25">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-25">&#182;</a>
+              </div>
+              <p>Append the paths for the elevation and area charts, within the
+same element, as well as the label and connector that displays
+the current heart rate</p>
 
-    svg.append(<span class="hljs-string">'path'</span>)
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    svg.append(<span class="hljs-string">'path'</span>)
         .datum(datePlaceHeart)
         .attr(<span class="hljs-string">'class'</span>, <span class="hljs-string">'elevation-area'</span>)
         .attr(<span class="hljs-string">'d'</span>, elevationLine);
@@ -481,18 +498,16 @@ varies.</p>
     <span class="hljs-keyword">var</span> connector = svg.append(<span class="hljs-string">'rect'</span>)
         .attr(<span class="hljs-string">'width'</span>, <span class="hljs-number">1</span>)
         .attr(<span class="hljs-string">'class'</span>, <span class="hljs-string">'heart-indicator'</span>)
-        .attr(<span class="hljs-string">'height'</span>, height);
-
-    <span class="hljs-keyword">var</span> bisect = d3.bisector(getDate).left;</pre></div></div>
+        .attr(<span class="hljs-string">'height'</span>, height);</pre></div></div>
             
         </li>
         
         
-        <li id="section-25">
+        <li id="section-26">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-25">&#182;</a>
+                <a class="pilcrow" href="#section-26">&#182;</a>
               </div>
               <p>Hove the label and indicator line on the charts whenever
 the slider moves.</p>
@@ -500,7 +515,7 @@ the slider moves.</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>    slider.on(<span class="hljs-string">'change.heart'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(d)</span> </span>{
-        <span class="hljs-keyword">var</span> datum = datePlaceHeart[bisect(datePlaceHeart, d)];
+        <span class="hljs-keyword">var</span> datum = datePlaceHeart[bisectPlace(datePlaceHeart, d)];
         label
             .attr(<span class="hljs-string">'transform'</span>, <span class="hljs-string">'translate('</span> + [x(d), -<span class="hljs-number">5</span>] + <span class="hljs-string">')'</span>)
             .text(getHeart(datum) + <span class="hljs-string">' bpm'</span>);
@@ -511,11 +526,11 @@ the slider moves.</p>
         </li>
         
         
-        <li id="section-26">
+        <li id="section-27">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-26">&#182;</a>
+                <a class="pilcrow" href="#section-27">&#182;</a>
               </div>
               <p>Append the slider element to the page.</p>
 

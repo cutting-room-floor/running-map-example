@@ -20,7 +20,9 @@ L.mapbox.accessToken = 'pk.eyJ1IjoidG1jdyIsImEiOiJIZmRUQjRBIn0.lRARalfaGHnPdRcc-
 
 // Load the GPX file with d3's xml method. This could also use [jQuery](http://jquery.com/)
 // for AJAX or any other library that supports loading XML with XMLHttpRequest.
-d3.xml('run.gpx', function(dom) {
+d3.text('run.gpx', function(str) {
+
+    var dom = (new DOMParser()).parseFromString(str, 'text/xml');
     // # Data Conversion
     //
     // Convert the GPX file to GeoJSON using toGeoJSON
