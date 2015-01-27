@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "docco": "docco index.js",
-    "start": "st -nc & watchify index.js -d -o bundle.js"
+    "start": "st -nc & watchify index.js -d -o bundle.js",
+    "build": "browserify index.js > bundle.js"
   },
   "author": "",
   "license": "ISC",
@@ -22,6 +23,7 @@
   },
   "devDependencies": {
     "brfs": "^1.2.0",
+    "browserify": "^8.1.1",
     "st": "^0.5.2",
     "watchify": "^2.2.1"
   }
